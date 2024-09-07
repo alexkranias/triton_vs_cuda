@@ -1,4 +1,4 @@
-# triton-vs-cuda
+# CUDA
 Building Triton and CUDA side-by-side in order to create a cuBLAS-performant GEMM kernel.
 
 # Setting up your CUDA development enviornment
@@ -30,6 +30,14 @@ wsl --version
 You should see something like `WSL version: 2.2.4.0`
 
 Find more information: https://docs.docker.com/desktop/gpu/
+
+## 4. Launch a Docker container using the included Dockerfile in `/cuda`
+1. cd into `triton_vs_cuda/cuda`
+2. run
+```
+docker build -t cuda .
+docker run -it --rm --gpus=all  --volume "$PWD/:/home/workspace" --workdir /home/workspace triton
+```
 
 ## 4. Find the [latest CUDA Development Docker Image](https://hub.docker.com/r/nvidia/cuda) and pull it.
 ```ssh
