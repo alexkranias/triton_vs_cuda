@@ -38,23 +38,34 @@ Find more information: https://docs.docker.com/desktop/gpu/
 docker build -t cuda .
 docker run -it --rm --gpus=all  --volume "$PWD/:/home/workspace" --workdir /home/workspace triton
 ```
+## 5. Build the project
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
 
-## 4. Find the [latest CUDA Development Docker Image](https://hub.docker.com/r/nvidia/cuda) and pull it.
+If you run into a CMake issue. Once you add your fix, I recommend deleting your build, then rebuilding with `cmake ..`
+
+
+# Manually launch CUDA docker container
+## 1. Find the [latest CUDA Development Docker Image](https://hub.docker.com/r/nvidia/cuda) and pull it.
 ```ssh
 docker pull nvidia/cuda:12.6.0-devel-ubuntu24.04
 ```
 **IMPORTANT NOTE:** the CUDA image you pull must have a version **equal to or LESS than** the CUDA Driver version installed on your machine. Check what version you have using `nvcc --version`.
 
-## 5. Open the CUDA directory to initialize your workspace in: `cd cuda`
+## 2. Open the CUDA directory to initialize your workspace in: `cd cuda`
 
-## 5. Launch the Docker image. It will launch a workspace in your PWD.
+## 3. Launch the Docker image. It will launch a workspace in your PWD.
 ```
 docker run -it --rm --gpus=all  --volume "$PWD/:/home/workspace" --workdir /home/workspace  nvidia/cuda:12.6.0-devel-ubuntu24.04
 ```
 
 You should now be in your Docker image (e.g. `root@7efed242491b:\home\workspace#`)
 
-## 6. Confirm GPU is accessible within Docker container
+## 4. Confirm GPU is accessible within Docker container
 ```
 nvidia-smi
 ```
@@ -69,13 +80,13 @@ You should see your GPU.
 ```
 If you don't this means that your **NVIDIA Container Toolkit (or WSL2) is not working/installed.**
 
-## 7. Install Other Libraries You'll Need in Your Docker Container
+## 5. Install Other Libraries You'll Need in Your Docker Container
 ```
 apt update
 apt install cmake
 ```
 
-## 8. Setup `build` dir and build
+## 6. Setup `build` dir and build
 ```
 mkdir build
 cd build
