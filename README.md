@@ -1,5 +1,5 @@
 # triton_vs_cuda
-**Building Triton and CUDA kernels side-by-side in order to create a cuBLAS-performant GEMM kernel.**
+**Building Triton and CUDA kernels side-by-side to create a cuBLAS-performant GEMM kernel.**
 
 Lately I've been learning Triton, its strengths, and its weaknesses. Inspired by [SiBohem's blog](https://siboehm.com/articles/22/CUDA-MMM), I thought I would show how we can attempt to build a Triton kernel as performant as a near-cuBLAS performant CUDA kernel. In this endeavor I hope to highlight a few things about Triton:
 - what are the limitations of a Triton's block level programming paradigm?
