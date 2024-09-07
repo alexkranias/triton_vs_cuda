@@ -49,7 +49,7 @@ cmake --build .
 If you run into a CMake issue. Once you add your fix, I recommend deleting your build, then rebuilding with `cmake ..`
 
 
-# Manually launch CUDA docker container
+# Manually launch a Docker container
 ## 1. Find the [latest CUDA Development Docker Image](https://hub.docker.com/r/nvidia/cuda) and pull it.
 ```ssh
 docker pull nvidia/cuda:12.6.0-devel-ubuntu24.04
